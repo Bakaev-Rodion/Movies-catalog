@@ -4,7 +4,7 @@ class showInfoFromDB
     private $pdo;
     function __construct(){
         $this->pdo=null;
-        $this->pdo = new PDO('mysql:host=localhost;port=3306;dbname=films','root');
+        $this->pdo = new PDO('mysql:host=localhost;port=3306;dbname=films','root','root');
     }
     function showInfo($id){
         return $this->pdo->query("SELECT DISTINCT filmscatalog.title,filmscatalog.year, actors.actor_name 
