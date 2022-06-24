@@ -11,7 +11,11 @@ class showAllFilmsFromDB
 
     function showAllFilms($order){
         $catalog=[];
-        if($order!=null) $order = " ORDER BY title";
+        switch($order){
+            case 'A-Z': $order=" ORDER BY title ASC"; break;
+            case 'Z-A': $order=" ORDER BY title DESC"; break;
+            default: $order = ""; break;
+        }
         $stmt=$this->pdo->query("SELECT * FROM filmscatalog".$order);
         while($row=$stmt->fetch(PDO::FETCH_ASSOC))
             array_push($catalog,$row);

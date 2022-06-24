@@ -12,7 +12,7 @@ class searchByActorFromDB
         return $this->pdo->query("SELECT DISTINCT filmscatalog.title,filmscatalog.year, actors.actor_name 
 FROM filmscatalog , actors , film_actor_relation 
 WHERE film_actor_relation.film_id=filmscatalog.id 
-  AND actors.actor_name='$actor' AND film_actor_relation.actor_id=actors.actor_id
+   AND film_actor_relation.actor_id=actors.actor_id AND actors.actor_name LIKE '%$actor%'
                                             ");
     }
     function __destroy(){
